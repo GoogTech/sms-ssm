@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pers.huangyuhui.sms.dao.StudentMapper">
+
+    <!-- 验证登录信息是否正确 -->
+    <select id="login" parameterType="loginform" resultType="pers.huangyuhui.sms.bean.Student">
+        SELECT id,
+               sno,
+               name,
+               gender,
+               password,
+               portrait_path,
+               email,
+               telephone,
+               address,
+               introducation,
+               clazz_name
+        FROM tb_student
+        WHERE name = #{username}
+          AND password = #{password}
+    </select>
+
+    <!-- 根据班级与学生名获取指定/全部学生信息列表 -->
+    <select id="selectList" parameterType="student" resultType="pers.huangyuhui.sms.bean.Student">
+        SELECT id, sno, name, gender, password, portrait_path, email, telephone, address, introducation, clazz_name
+        FROM tb_student
+        <where>
+            <if test="clazz_name!=null and clazz_name!=''">
+                AND clazz_name = #{clazz_name}
+            </if>
+            <if test="name!=null and name!=''">
+                AND name LIKE concat(concat('%',#{name}),'%')
+            </if>
+        </where>
+    </select>
+
+    <!-- 根据学号查询指定学生信息 -->
+    <select id="findBySno" resultType="student" parameterType="pers.huangyuhui.sms.bean.Student">
+        SELECT id,
+               sno,
+               name,
+               gender,
+               password,
+               portrait_path,
+               email,
+               telephone,
+               address,
+               introducation,
+               clazz_name
+        FROM tb_student
+        WHERE sno = #{sno}
+    </select>
+
+    <!-- 添加学生信息 -->
+    <insert id="insert" parameterType="student">
+        INSERT INTO tb_student(sno, name, gender, password, portrait_path, email, telephone, address, introducation,
+                               clazz_name)
+        VALUES (#{sno}, #{name}, #{gender}, #{password}, #{portrait_path}, #{email}, #{telephone}, #{address},
+                #{introducation}, #{clazz_name})
+    </insert>
+
+    <!-- 根据id修改指定学生信息 -->
+    <update id="update" parameterType="student">
+        UPDATE tb_student
+        <set>
+            <if test="name!=null and name!=''">name=#{name},</if>
+            <if test="gender!=null and gender!=''">gender=#{gender},</if>
+            <if test="password!=null and password!=''">password=#{password},</if>
+            <if test="email!=null and email!=''">email=#{email},</if>
+            <if test="telephone!=null and telephone!=''">telephone=#{telephone},</if>
+            <if test="address!=null and address!=''">address=#{address},</if>
+            <if test="introducation!=null and introducation!=''">introducation=#{introducation},</if>
+            <if test="portrait_path!=null and portrait_path!=''">portrait_path=#{portrait_path},</if>
+            <if test="clazz_name!=null and clazz_name!=''">clazz_name=#{clazz_name},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!-- 根据id修改指定学生密码 -->
+    <update id="updatePassword" parameterType="student">
+        UPDATE tb_student
+        SET password=#{password}
+        WHERE id = #{id}
+    </update>
+
+    <!-- 根据id批量删除指定学生信息 -->
+    <delete id="deleteById">
+        DELETE FROM tb_student WHERE id IN
+        <foreach collection="array" item="ids" open="(" separator="," close=")">
+            #{ids}
+        </foreach>
+    </delete>
+
+</mapper>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <description>Spring-MVC configuration file</description>
+
+    <!-- 启用注解扫描器: 扫描被@Controller注解的类 -->
+    <context:component-scan base-package="pers.huangyuhui.sms.controller"/>
+
+    <!-- 加载注解驱动 -->
+    <mvc:annotation-driven/>
+
+    <!-- 处理静态资源 -->
+    <mvc:default-servlet-handler/>
+
+    <!-- 配置拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/static/h-ui/**"/>
+            <mvc:exclude-mapping path="/static/easyui/**"/>
+            <mvc:exclude-mapping path="/system/login"/>
+            <mvc:exclude-mapping path="/system/getVerifiCodeImage"/>
+            <bean class="pers.huangyuhui.sms.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <!-- 配置文件上传解析器 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 指定请求编码格式 -->
+        <property name="defaultEncoding" value="UTF-8"/>
+        <!-- 指定指定允许上传文件的最大值(20MB) -->
+        <property name="maxUploadSize" value="20971520"/>
+    </bean>
+
+    <!-- 配置视图解析器 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pers.huangyuhui.sms.dao.TeacherMapper">
+
+    <!-- 验证登录信息是否正确 -->
+    <select id="login" parameterType="loginform" resultType="pers.huangyuhui.sms.bean.Teacher">
+        SELECT id,
+               tno,
+               name,
+               gender,
+               password,
+               email,
+               telephone,
+               address,
+               portrait_path,
+               clazz_name
+        FROM tb_teacher
+        WHERE name = #{username}
+          AND password = #{password}
+    </select>
+
+    <!-- 根据教师与班级名查询指定/全部教师信息列表 -->
+    <select id="selectList" parameterType="teacher" resultType="pers.huangyuhui.sms.bean.Teacher">
+        SELECT id, tno, name, gender, password, email, telephone, address, portrait_path, clazz_name
+        FROM tb_teacher
+        <where>
+            <if test="clazz_name!=null and clazz_name!=''">
+                AND clazz_name = #{clazz_name}
+            </if>
+            <if test="name!=null and name!=''">
+                AND name LIKE concat(concat('%',#{name}),'%')
+            </if>
+        </where>
+    </select>
+
+    <!-- 根据工号查询指定教师信息 -->
+    <select id="findByTno" resultType="teacher" parameterType="pers.huangyuhui.sms.bean.Teacher">
+        SELECT id,
+               tno,
+               name,
+               gender,
+               password,
+               email,
+               telephone,
+               address,
+               portrait_path,
+               clazz_name
+        FROM tb_teacher
+        WHERE tno = #{tno}
+    </select>
+
+    <!-- 添加教师信息 -->
+    <insert id="insert" parameterType="teacher">
+        INSERT INTO tb_teacher(tno, name, gender, password, email, telephone, address, portrait_path, clazz_name)
+        VALUES (#{tno}, #{name}, #{gender}, #{password}, #{email}, #{telephone}, #{address}, #{portrait_path},
+                #{clazz_name})
+    </insert>
+
+    <!-- 根据id修改指定教师信息 -->
+    <update id="update" parameterType="teacher">
+        UPDATE tb_teacher
+        <set>
+            <if test="name!=null and name!=''">name=#{name},</if>
+            <if test="gender!=null and gender!=''">gender=#{gender},</if>
+            <if test="password!=null and password!=''">password=#{password},</if>
+            <if test="email!=null and email!=''">email=#{email},</if>
+            <if test="telephone!=null and telephone!=''">telephone=#{telephone},</if>
+            <if test="address!=null and address!=''">address=#{address},</if>
+            <if test="portrait_path!=null and portrait_path!=''">portrait_path=#{portrait_path},</if>
+            <if test="clazz_name!=null and clazz_name!=''">clazz_name=#{clazz_name},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!-- 根据id修改指定教师密码 -->
+    <update id="updatePassword" parameterType="teacher">
+        UPDATE tb_teacher
+        SET password=#{password}
+        WHERE id = #{id}
+    </update>
+
+    <!-- 根据id批量删除指定教师信息 -->
+    <delete id="deleteById">
+        DELETE FROM tb_teacher WHERE id IN
+        <foreach collection="array" item="ids" open="(" separator="," close=")">
+            #{ids}
+        </foreach>
+    </delete>
+
+</mapper>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <description>Spring configuration file</description>
+
+    <!-- 读取c3p0.properties中的数据库配置信息 -->
+    <context:property-placeholder location="classpath:database-conf/c3p0.properties"/>
+
+    <!-- 配置数据源 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <!-- 数据库驱动 -->
+        <property name="driverClass" value="${c3p0.driverClass}"/>
+        <!-- 连接数据库的url -->
+        <property name="jdbcUrl" value="${c3p0.jdbcUrl}"/>
+        <!-- 连接数据库的用户名 -->
+        <property name="user" value="${c3p0.user}"/>
+        <!-- 连接数据库的密码 -->
+        <property name="password" value="${c3p0.password}"/>
+        <!-- 初始化连接数 -->
+        <property name="initialPoolSize" value="${c3p0.initialPoolSize}"/>
+        <!-- 最大连接数 -->
+        <property name="maxPoolSize" value="${c3p0.maxPoolSize}"/>
+        <!-- 最小连接数 -->
+        <property name="minPoolSize" value="${c3p0.minPoolSize}"/>
+        <!-- 连接的生存时间 -->
+        <property name="maxIdleTime" value="${c3p0.maxIdleTime}"/>
+    </bean>
+
+    <!-- 配置Spring事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!-- 原理:控制数据源 -->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 开启事务注解扫描 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <!-- MyBatis与Spring整合 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 注入数据源 -->
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 指定Mapper映射文件位置 -->
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+        <!-- 指定MyBatis核心配置文件位置 -->
+        <property name="configLocation" value="classpath:/mybatis-conf/mybatis-config.xml"/>
+        <!-- 引入插件 -->
+        <property name="plugins">
+            <array>
+                <!-- 引入MyBaits分页插件 -->
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <!-- 指定数据库类型 -->
+                        <value>helperDialct=mysql</value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+    </bean>
+
+    <!-- 开启Mapper接口扫描器: 扫描Dao层 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="pers.huangyuhui.sms.dao"/>
+    </bean>
+
+    <!-- 开启Spring IOC注解扫描器: 扫描Servie层-->
+    <context:component-scan base-package="pers.huangyuhui.sms.service"/>
+
+</beans>

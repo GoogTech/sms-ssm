@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 为sql映射文件中的输入/输出参数设置类型别名 -->
+    <typeAliases>
+        <package name="pers.huangyuhui.sms.bean"/>
+    </typeAliases>
+</configuration>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pers.huangyuhui.sms.dao.ClazzMapper">
+
+    <!-- 根据年级与班级名查询指定/全部班级信息列表 -->
+    <select id="selectList" parameterType="clazz" resultType="pers.huangyuhui.sms.bean.Clazz">
+        SELECT id, name, number, introducation, coordinator, email, telephone, grade_name FROM tb_clazz
+        <where>
+            <if test="grade_name!=null and grade_name!=''">
+                AND grade_name = #{grade_name}
+            </if>
+            <if test="name!=null and name!=''">
+                AND name LIKE concat(concat('%',#{name}),'%')
+            </if>
+        </where>
+    </select>
+
+    <!-- 查询所有班级列表信息(用于在学生管理页面中获取班级信息) -->
+    <select id="selectAll" resultType="pers.huangyuhui.sms.bean.Clazz">
+        SELECT id,
+               name,
+               number,
+               introducation,
+               coordinator,
+               email,
+               telephone,
+               grade_name
+        FROM ssm_sms.tb_clazz
+    </select>
+
+    <!-- 查询指定名称的班级信息 -->
+    <select id="findByName" parameterType="String" resultType="pers.huangyuhui.sms.bean.Clazz">
+        SELECT id,
+               name,
+               number,
+               introducation,
+               coordinator,
+               email,
+               telephone,
+               grade_name
+        FROM tb_clazz
+        WHERE name = #{name}
+    </select>
+
+    <!-- 添加班级信息 -->
+    <insert id="insert" parameterType="clazz">
+        INSERT INTO tb_clazz(name, number, introducation, coordinator, email, telephone, grade_name)
+        VALUES (#{name}, #{number}, #{introducation}, #{coordinator}, #{email}, #{telephone}, #{grade_name})
+    </insert>
+
+    <!-- 指定id修改指定班级信息 -->
+    <update id="update" parameterType="clazz">
+        UPDATE tb_clazz
+        SET name=#{name},
+            number=#{number},
+            introducation=#{introducation},
+            coordinator=#{coordinator},
+            email=#{email},
+            telephone=#{telephone},
+            grade_name=#{grade_name}
+        WHERE id = #{id}
+    </update>
+
+    <!-- 根据id批量删除指定的班级信息 -->
+    <delete id="deleteById">
+        DELETE FROM tb_clazz WHERE id IN
+        <foreach collection="array" item="ids" open="(" separator="," close=")">
+            #{ids}
+        </foreach>
+    </delete>
+
+</mapper>

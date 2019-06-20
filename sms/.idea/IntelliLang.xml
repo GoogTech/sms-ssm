@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="LanguageInjectionConfiguration">
+    <injection language="SQL" injector-id="xml">
+      <display-name>iBatis3: sql|select|insert|update|delete</display-name>
+      <place>xmlTag().withLocalName(string().oneOf(&quot;select&quot;, &quot;insert&quot;, &quot;update&quot;, &quot;delete&quot;)).withNamespace(string().oneOf(&quot;http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd&quot;, &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;))</place>
+      <apply-to-subtags />
+    </injection>
+  </component>
+</project>
