@@ -193,7 +193,7 @@ public class SystemController {
 
         //注销后重定向到登录页面
         try {
-            response.sendRedirect("WEB-INF/view/system/login.jsp");
+            response.sendRedirect("../index.jsp");
         } catch (IOException e) {
             e.printStackTrace();
         }
