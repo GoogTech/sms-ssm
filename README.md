@@ -230,24 +230,29 @@ h-ui/
 easyui/
 ```
 
-#### 项目结构说明-`Spring 核心配置文件`
+#### 项目文件说明-`Spring 核心配置文件`
 ```
 applicationContext.xml
 ```
 
-#### 项目结构说明-`Spring MVC 核心配置文件`
+#### 项目文件说明-`Spring MVC 核心配置文件`
 ```
 springmvc-config.xml
 ```
 
-#### 项目结构说明-`MyBatis 核心配置文件`
+#### 项目文件说明-`MyBatis 核心配置文件`
 ```
 mybatis-config.xml
 ```
 
-#### 项目结构说明-`Mapper 接口映射文件`
+#### 项目文件说明-`Mapper 接口映射文件`
 ```
 mapper/
+```
+
+#### 项目文件说明-`用户默认头像`
+```
+portrait/
 ```
 
 
