@@ -22,6 +22,7 @@
         <project.build.mybaits.version>3.5.1</project.build.mybaits.version>
         <project.build.myabtis.pagehelper.version>5.1.9</project.build.myabtis.pagehelper.version>
         <project.build.mybatis.spring.version>2.0.1</project.build.mybatis.spring.version>
+        <project.build.servlet.version>2.5</project.build.servlet.version>
         <project.build.jstl.version>1.2</project.build.jstl.version>
         <project.build.mysql.jdbc.version>8.0.16</project.build.mysql.jdbc.version>
         <project.build.mysql.c3p0.version>0.9.5.4</project.build.mysql.c3p0.version>
@@ -72,6 +73,12 @@
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
             <version>${project.build.mybatis.spring.version}</version>
+        </dependency>
+        <!-- Servelt API -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>${project.build.servlet.version}</version>
         </dependency>
         <!-- JSTL -->
         <dependency>
