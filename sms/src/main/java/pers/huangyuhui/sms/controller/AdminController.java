@@ -165,36 +165,12 @@ public class AdminController {
     @PostMapping("/uploadPhoto")
     @ResponseBody
     public Map<String, Object> uploadPhoto(MultipartFile photo, HttpServletRequest request) {
-        final String DIR_PAHT = request.getServletContext().getRealPath("/upload/admin_portrait/");//存储头像的本地目录
-        final String PORTRAIT_PATH = request.getServletContext().getContextPath() + "/upload/admin_portrait/";//存储头像的项目发布目录
-
-        if (!photo.isEmpty() && photo.getSize() > 0) {
-            //获取图片的原始名称
-            String orginalName = photo.getOriginalFilename();
-            //上传图片,error_result:存储图片上传失败的错误信息
-            Map<String, Object> error_result = UploadFile.uploadPhoto(photo, DIR_PAHT);
-            if (error_result != null) {
-                return error_result;
-            }
-            //使用UUID重命名图片名称(uuid__原始图片名称)
-            String newPhotoName = UUID.randomUUID() + "__" + orginalName;
-            //将上传的文件保存到目标目录下
-            try {
-                photo.transferTo(new File(DIR_PAHT + newPhotoName));
-                result.put("success", true);
-                result.put("portrait_path", PORTRAIT_PATH + newPhotoName);//将存储头像的项目路径返回给页面
-            } catch (IOException e) {
-                e.printStackTrace();
-                result.put("success", false);
-                result.put("msg", "上传文件失败! 服务器端发生异常!");
-                return result;
-            }
-
-        } else {
-            result.put("success", false);
-            result.put("msg", "头像上传失败! 未找到指定图片!");
-        }
-        return result;
+        //存储头像的本地目录
+        final String dirPath = request.getServletContext().getRealPath("/upload/admin_portrait/");
+        //存储头像的项目发布目录
+        final String portraitPath = request.getServletContext().getContextPath() + "/upload/admin_portrait/";
+        //返回头像的上传结果
+        return UploadFile.getUploadResult(photo, dirPath, portraitPath);
     }
 
 }
