@@ -13,7 +13,6 @@ import java.util.List;
  * @version: 1.0
  * @website: https://yubuntu0109.github.io/
  */
-@Service
 public interface GradeService {
 
     // TODO: 6/14/2019 根据年级名称查询指定/全部年级列表信息

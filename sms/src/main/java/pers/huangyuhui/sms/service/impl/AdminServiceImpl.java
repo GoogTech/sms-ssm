@@ -19,6 +19,7 @@ import java.util.List;
  */
 
 @Service
+@Transactional
 public class AdminServiceImpl implements AdminService {
 
     //注入Mapper接口对象

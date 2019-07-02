@@ -18,6 +18,7 @@ import java.util.List;
  * @website: https://yubuntu0109.github.io/
  */
 @Service
+@Transactional
 public class StudentServiceImpl implements StudentService {
 
     //注入Mapper接口对象

@@ -17,8 +17,8 @@ import java.util.List;
  * @version: 1.0
  * @website: https://yubuntu0109.github.io/
  */
-
 @Service
+@Transactional
 public class TeacherServiceImpl implements TeacherService {
 
     //注入Mapper接口对象

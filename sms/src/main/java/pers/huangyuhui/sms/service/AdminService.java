@@ -14,7 +14,6 @@ import java.util.List;
  * @version: 1.0
  * @website: https://yubuntu0109.github.io/
  */
-@Service
 public interface AdminService {
 
     // TODO: 6/18/2019 验证登录信息是否正确

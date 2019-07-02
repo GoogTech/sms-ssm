@@ -13,7 +13,6 @@ import java.util.List;
  * @version: 1.0
  * @website: https://yubuntu0109.github.io/
  */
-@Service
 public interface ClazzService {
 
     // TODO: 6/14/2019 根据年级与班级名查询指定/全部班级信息列表

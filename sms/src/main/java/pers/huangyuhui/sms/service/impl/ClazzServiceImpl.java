@@ -17,6 +17,7 @@ import java.util.List;
  * @website: https://yubuntu0109.github.io/
  */
 @Service
+@Transactional
 public class ClazzServiceImpl implements ClazzService {
 
     //注入Mapper接口对象
