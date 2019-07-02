@@ -297,7 +297,7 @@
                 $("#add-portrait").attr("src", data.portrait_path);
                 $("#edit-portrait").attr("src", data.portrait_path);
                 //将头像路径存储到教师信息表单中(利用从用户信息中读取头像路径来显示头像)
-                $("#add_portrait_path").val(data.portrait_path);
+                $("#add_portrait-path").val(data.portrait_path);
                 $("#edit_portrait-path").val(data.portrait_path);
             } else {
                 $.messager.alert("提示", data.msg, "warning");
