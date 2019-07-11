@@ -2,6 +2,7 @@ package pers.huangyuhui.sms.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pers.huangyuhui.sms.bean.Grade;
 import pers.huangyuhui.sms.dao.GradeMapper;
 import pers.huangyuhui.sms.service.GradeService;
