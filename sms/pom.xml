@@ -17,7 +17,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.spring.webmvc.version>5.1.7.RELEASE</project.build.spring.webmvc.version>
         <project.build.spring.webmvc.file.version>1.4</project.build.spring.webmvc.file.version>
-        <project.build.spring.webmvc.json.version>2.9.9</project.build.spring.webmvc.json.version>
+        <project.build.spring.webmvc.json.version>2.9.9.1</project.build.spring.webmvc.json.version>
         <project.build.spring.jdbc.version>5.1.7.RELEASE</project.build.spring.jdbc.version>
         <project.build.mybaits.version>3.5.1</project.build.mybaits.version>
         <project.build.myabtis.pagehelper.version>5.1.9</project.build.myabtis.pagehelper.version>
