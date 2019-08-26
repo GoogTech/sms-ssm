@@ -262,7 +262,7 @@ portrait/
 
 
 
-:clock8: *`2019-7-2`回首仔细阅读并认真思索该项目的源码,发现该项目中的代码其实非常臃肿呀,其可扩张性也很差哟 ! 这毕竟是我第一个`SSM`小项目,所以请原谅吧嘿嘿~ 为了让你写出更加优美的代码及更加具有可扩张性的项目,这里我给出了一个可作为`重构`该项目的参考案例 ：https://github.com/YUbuntu0109/springboot-beginner/tree/refactor-190823 , 及一个可供你近一步参考与学习的小项目 : https://github.com/YUbuntu0109/springboot-shiro*
+:clock8: *`2019-7-2`回首仔细阅读并认真思索该项目的源码,发现该项目中的代码其实非常臃肿呀,其可扩张性也很差哟 ! 这毕竟是我第一个`SSM`小项目,所以请原谅吧嘿嘿~ 为了让你写出更加优美的代码及更加具有可扩张性的项目,这里我给出了一个可作为`重构`该项目的参考案例 ：https://github.com/YUbuntu0109/springboot-beginner/tree/refactor-190823 , 及一个可供你近一步参考与学习的小项目 : https://github.com/YUbuntu0109/springboot-shiro , 更多有待优化的方面请参考我的计划哟 : https://github.com/YUbuntu0109/SSM-SMS/projects/1*
 
 
 
