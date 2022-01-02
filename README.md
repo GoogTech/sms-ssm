@@ -1,8 +1,10 @@
-## :school::mortar_board::sparkles: a simple student management system , created by SSM framework ~
+## 一个Mini的学生管理系统
+* ❗ 项目根目录为 : sms-ssm/sms/
+* ❗ 若配置好环境后运行仍抛出异常, 请参考这个[解决方法](https://github.com/GoogTech/sms-ssm/issues/15#issue-645716616)
 
 
-### 项目概述  (:speech_balloon: pause update)
-:+1:*一个基于SSM的学生管理系统 : 代码注释详细,逻辑结构清晰,非常具有参考,学习价值哟 !*
+### 项目概述
+:+1:*一个基于SSM的学生管理系统 : 代码注释详细,逻辑结构清晰,**对于初学 SSM 的同学非常具有参考,及学习价值哟 !***
 
 :key:*数据库中默认的管理员身份信息 : 账户名 : `黄宇辉` , 密码 `demo0109`*
 
@@ -21,265 +23,85 @@
 
 ### 用户权限介绍
 - *管理员 : 具有所有管理模块的操控权限*
-- *教师 : 仅具有学生信息管理模块的所有权限,且在教师信息管理模块中只具有查询及添加信息的权限*
 - *学生 : 仅具有学生信息管理模块的查询及添加信息的权限*
+- *教师 : 仅具有学生信息管理模块的所有权限,且在教师信息管理模块中只具有查询及添加信息的权限*
 
 
-### 项目截图 (`管理员身份登录`)
+### 项目截图
+#### 管理员登录
 - *用户登录页面*
-
-![](https://raw.githubusercontent.com/YUbuntu0109/SSM-SMS/master/demonstration_picture/SMS-Login-view.PNG)
+<img width="960" alt="SMS-Login-view" src="https://user-images.githubusercontent.com/43493852/147872814-0d794f7d-aeb3-4edc-ac18-30398d1d8ec3.PNG">
 
 - *系统主页面*
-
-![](https://raw.githubusercontent.com/YUbuntu0109/SSM-SMS/master/demonstration_picture/SSM-Main-view.PNG)
+<img width="960" alt="SSM-Main-view" src="https://user-images.githubusercontent.com/43493852/147872824-54888fe7-8c8c-427b-b763-a00752ef3400.PNG">
 
 - *管理员信息管理页面*
+<img width="960" alt="SSM-AdminInfo-view" src="https://user-images.githubusercontent.com/43493852/147872868-4247ec05-94f2-4268-958f-2819fe1403b8.PNG">
 
-![](https://raw.githubusercontent.com/YUbuntu0109/SSM-SMS/master/demonstration_picture/SSM-AdminInfo-view.PNG)
-
-- *学生信息管理页面*
-
-![](https://raw.githubusercontent.com/YUbuntu0109/SSM-SMS/master/demonstration_picture/SMS-StudentInfo-view.PNG)
-
-- *教师信息管理页面*
-
-![](https://raw.githubusercontent.com/YUbuntu0109/SSM-SMS/master/demonstration_picture/SMS-TeacherInfo-view.PNG)
-
-- *年级信息管理页面*
-
-![](https://raw.githubusercontent.com/YUbuntu0109/SSM-SMS/master/demonstration_picture/SMS-GradeInfo-view.PNG)
-
-- *班级信息管理页面*
-
-![](https://raw.githubusercontent.com/YUbuntu0109/SSM-SMS/master/demonstration_picture/SMS-ClassInfo-view.PNG)
-
-- *个人信息管理页面*
-
-![](https://raw.githubusercontent.com/YUbuntu0109/SSM-SMS/master/demonstration_picture/SMS-ModifyPwd-view.PNG)
-
-
-### 项目截图 (`教师身份登录`)
+#### 教师登录
 - *教师仅具有学生信息管理模块的所有权限,且在教师信息管理模块中只具有查询及添加信息的权限*
-![](https://raw.githubusercontent.com/YUbuntu0109/SSM-SMS/master/demonstration_picture/SMS-Teacher-permission.PNG)
+<img width="960" alt="SMS-Teacher-permission" src="https://user-images.githubusercontent.com/43493852/147872900-b4ccc147-37fa-4fb5-96bf-d8c2708812c8.PNG">
 
-
-### 项目截图 (`学生身份登录`)
+#### 学生登录
 - *学生仅具有学生信息管理模块的查询及添加信息的权限*
-![](https://raw.githubusercontent.com/YUbuntu0109/SSM-SMS/master/demonstration_picture/SMS-Student-permission.PNG)
+<img width="960" alt="SMS-Student-permission" src="https://user-images.githubusercontent.com/43493852/147872908-25678b0c-b51e-4e31-9f96-2733200182b7.PNG">
 
 
-### 项目结构
-```
-│  .gitattributes
-│  LICENSE
-│  README.md
-│
-├─database file
-│      ssm_sms.sql
-│
-├─demonstration_picture
-│      SMS-ClassInfo-view.PNG
-│      SMS-GradeInfo-view.PNG
-│      SMS-Login-view.PNG
-│      SMS-ModifyPwd-view.PNG
-│      SMS-Student-permission.PNG
-│      SMS-StudentInfo-view.PNG
-│      SMS-Teacher-permission.PNG
-│      SMS-TeacherInfo-view.PNG
-│      SSM-AdminInfo-view.PNG
-│      SSM-Main-view.PNG
-│
-└─sms
-    │  pom.xml
-    │
-    │
-    └─src
-        └─main
-            ├─java
-            │  └─pers
-            │      └─huangyuhui
-            │          └─sms
-            │              ├─bean
-            │              │      Admin.java
-            │              │      Clazz.java
-            │              │      Grade.java
-            │              │      LoginForm.java
-            │              │      Student.java
-            │              │      Teacher.java
-            │              │
-            │              ├─controller
-            │              │      AdminController.java
-            │              │      ClazzController.java
-            │              │      CommonController.java
-            │              │      GradeController.java
-            │              │      StudentController.java
-            │              │      SystemController.java
-            │              │      TeacherController.java
-            │              │
-            │              ├─dao
-            │              │      AdminMapper.java
-            │              │      ClazzMapper.java
-            │              │      GradeMapper.java
-            │              │      StudentMapper.java
-            │              │      TeacherMapper.java
-            │              │
-            │              ├─interceptor
-            │              │      LoginInterceptor.java
-            │              │
-            │              ├─service
-            │              │  │  AdminService.java
-            │              │  │  ClazzService.java
-            │              │  │  GradeService.java
-            │              │  │  StudentService.java
-            │              │  │  TeacherService.java
-            │              │  │
-            │              │  └─impl
-            │              │          AdminServiceImpl.java
-            │              │          ClazzServiceImpl.java
-            │              │          GradeServiceImpl.java
-            │              │          StudentServiceImpl.java
-            │              │          TeacherServiceImpl.java
-            │              │
-            │              └─util
-            │                      CreateVerifiCodeImage.java
-            │                      UploadFile.java
-            │
-            ├─resource
-            │  ├─database-conf
-            │  │      c3p0.properties
-            │  │
-            │  ├─mapper
-            │  │      AdminMapper.xml
-            │  │      ClazzMapper.xml
-            │  │      GradeMapper.xml
-            │  │      StudentMapper.xml
-            │  │      TeacherMapper.xml
-            │  │
-            │  ├─mybatis-conf
-            │  │      mybatis-config.xml
-            │  │
-            │  └─spring-conf
-            │          applicationContext.xml
-            │          springmvc-config.xml
-            │
-            └─webapp
-                │  index.jsp
-                │
-                ├─image
-                │  └─portrait
-                │          default_admin_portrait.png
-                │          default_student_portrait.png
-                │          default_teacher_portrait.png
-                │
-                ├─static
-                │  ├─easyui
-                │  │  │  
-                │  │  ├─css     
-                │  │  │
-                │  │  ├─js    
-                │  │  │
-                │  │  └─themes
-                │  │     
-                │  │
-                │  └─h-ui
-                │      │(略..)
-                │        
-                │            
-                │
-                └─WEB-INF
-                    │  web.xml
-                    │
-                    └─view
-                        ├─admin
-                        │      adminList.jsp
-                        │
-                        ├─clazz
-                        │      clazzList.jsp
-                        │
-                        ├─common
-                        │      settings.jsp
-                        │
-                        ├─error
-                        │      404.jsp
-                        │      500.jsp
-                        │
-                        ├─grade
-                        │      gradeList.jsp
-                        │
-                        ├─student
-                        │      studentList.jsp
-                        │
-                        ├─system
-                        │      intro.jsp
-                        │      login.jsp
-                        │      main.jsp
-                        │
-                        └─teacher
-                                teacherList.jsp
-```
-
-#### 项目文件说明-`数据库文件`
+### 项目文件
+数据库文件
 ```
 ssm_sms.sql
 ```
 
-#### 项目文件说明-`数据库配置信息`
+数据库配置信息
 ```
 c3p0.properties
 ```
 
-#### 项目文件说明-`H-ui 前端框架`
+H-ui 前端框架
 ```
 h-ui/
 ```
 
-#### 项目文件说明-`EasyUI 前端框架`
+EasyUI 前端框架
 ```
 easyui/
 ```
 
-#### 项目文件说明-`Spring 核心配置文件`
+Spring 核心配置文件
 ```
 applicationContext.xml
 ```
 
-#### 项目文件说明-`Spring MVC 核心配置文件`
+Spring MVC 核心配置文件
 ```
 springmvc-config.xml
 ```
 
-#### 项目文件说明-`MyBatis 核心配置文件`
+MyBatis 核心配置文件
 ```
 mybatis-config.xml
 ```
 
-#### 项目文件说明-`Mapper 接口映射文件`
+Mapper 接口映射文件
 ```
 mapper/
 ```
 
-#### 项目文件说明-`用户默认头像`
+用户默认头像
 ```
 portrait/
 ```
 
 
-#### 数据库ER图
+### ER图
 :sweat_smile: *数据库设计待优化 : 数据表之间的并没有设置约束关系,等你优化哟,好尴尬嘻嘻· · ·*
-![](https://raw.githubusercontent.com/YUbuntu0109/SSM-SMS/master/demonstration_picture/SMS-Database-ER.png)
-
-#### Jar包依赖关系图
-![](https://raw.githubusercontent.com/YUbuntu0109/SSM-SMS/master/demonstration_picture/SMS-Jar-dependency.png)
+![SMS-Database-ER](https://user-images.githubusercontent.com/43493852/147872918-8450a76e-c2cd-4dc3-9669-753ee7711d80.png)
 
 
+### Jar依赖关系
+![SMS-Jar-dependency](https://user-images.githubusercontent.com/43493852/147872924-dc791161-7351-45f6-aa35-85ad0143d11c.png)
 
-> `2019-7-2`回首仔细阅读并认真思索该项目的源码，惊喜地发现该项目中的代码有许多需要优化的地方，这毕竟是我第一个`SSM`小项目，所以暂请原谅吧嘿嘿~ 为了让你写出更加优美的代码及更加具有可扩张性的项目，这里我给出了一个可作为`重构`该项目的参考案例 ：https://github.com/YUbuntu0109/springboot-beginner/tree/refactor-190823 ，及一个可供你近一步参考与学习的项目 : https://github.com/YUbuntu0109/springboot-shiro ，还有一个非常适合初学设计模式的同学用于学习与参考的项目 ：https://github.com/YUbuntu0109/design-patterns-in-java ，本项目有待优化的详细信息请参考我的计划哟 : https://github.com/YUbuntu0109/SSM-SMS/projects/1
 
-
-
-*:books:更多有趣项目及详细学习笔记请前往我的个人博客哟（づ￣3￣）づ╭❤～ : https://yubuntu0109.github.io/*
-
-*👩‍💻学习笔记已全部开源 : https://github.com/YUbuntu0109/YUbuntu0109.github.io*
- 
-*:coffee: Look forward to your contribution, if you need any help, please contact me~ QQ : 3083968068*
+### 建议
+> 2019-7-2回首仔细阅读并认真思索该项目的源码，惊喜地发现该项目中的代码有许多需要优化的地方，这毕竟是我第一个`SSM`小项目，所以暂请原谅吧嘿嘿~ 为了让你写出更加优美的代码及更加具有可扩张性的项目，这里我给出了一个可作为`重构`该项目的[参考案例](https://github.com/googtech/springboot-beginner/tree/refactor-190823). 如有问题请邮件联系.
